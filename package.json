@@ -1,0 +1,7 @@
+{
+  "name": "huypc-pro-x-server",
+  "private": true,
+  "dependencies": {
+    "@netlify/blobs": "^9.1.0"
+  }
+}
