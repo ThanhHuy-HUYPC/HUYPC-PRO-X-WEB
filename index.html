@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ADMIN KEY HUYPC PORX</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="bg"></div>
+<header>
+  <div>
+    <div class="brand">HUYPC <span>KEY PRO-X</span></div>
+    <div class="sub">Quản lý License Key • ADMIN</div>
+  </div>
+  <button class="btn danger" id="deleteAll">XÓA TẤT CẢ</button>
+</header>
+
+<main>
+<section class="grid stats">
+  <div class="card stat"><b id="total">0</b><span>TỔNG KEY</span></div>
+  <div class="card stat"><b id="active">0</b><span>ĐANG HOẠT ĐỘNG</span></div>
+  <div class="card stat"><b id="expired">0</b><span>ĐÃ HẾT HẠN</span></div>
+  <div class="card stat"><b id="revoked">0</b><span>ĐÃ KHÓA</span></div>
+</section>
+
+<section class="grid main">
+  <div class="card create">
+    <h2>TẠO KEY MỚI</h2>
+    <label>Số ngày sử dụng</label>
+    <div class="row">
+      <input id="days" type="number" min="1" value="30">
+      <button class="btn primary" id="create">+ TẠO KEY</button>
+    </div>
+    <label>Hoặc nhập thời hạn cụ thể</label>
+    <input id="expiresAt" type="datetime-local">
+    <p class="hint">Key được sinh tự động theo dạng HUYPC-XXXX-XXXX-XXXX-XXXX.</p>
+  </div>
+
+  <div class="card">
+    <h2>THAO TÁC</h2>
+    <div class="row wrap">
+      <button class="btn" id="refresh">↻ LÀM MỚI</button>
+      <button class="btn" id="export">↓ XUẤT JSON</button>
+      <label class="btn file">↑ NHẬP JSON<input id="importFile" type="file" accept=".json"></label>
+    </div>
+    <p class="hint">Dữ liệu lưu trên server trong SQLite, không mất khi F5.</p>
+  </div>
+</section>
+
+<section class="card">
+  <div class="table-head">
+    <h2>DANH SÁCH KEY</h2>
+    <input id="search" placeholder="Tìm Key / User / thiết bị...">
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr>
+        <th>KEY</th><th>USER</th><th>THIẾT BỊ</th><th>HẾT HẠN</th><th>TRẠNG THÁI</th><th>THAO TÁC</th>
+      </tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+</section>
+</main>
+
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <button class="x" id="close">×</button>
+    <h2>QUẢN LÝ KEY</h2>
+    <input id="mkey" readonly>
+    <label>User</label><input id="muser" placeholder="Chưa liên kết">
+    <label>Thiết bị</label><input id="mdevice" placeholder="Chưa liên kết">
+    <label>Hạn sử dụng</label><input id="mexpiry" type="datetime-local">
+    <label>Trạng thái</label>
+    <select id="mstatus"><option value="active">Hoạt động</option><option value="revoked">Khóa</option></select>
+    <div class="row">
+      <button class="btn primary" id="save">LƯU</button>
+      <button class="btn danger" id="delete">XÓA KEY</button>
+    </div>
+  </div>
+</div>
+<script src="assets/app.js"></script>
+</body>
+</html>
